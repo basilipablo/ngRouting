@@ -4,13 +4,14 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { ContactDetailComponent } from './pages/contact-detail/contact-detail.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
   {
     path: '', pathMatch: 'full', redirectTo: 'home'
   },
   {
-    path: 'home', component:HomePageComponent
+    path: 'home', component:HomePageComponent,
   },
   {
     path: 'login', component:LoginComponent
@@ -20,6 +21,9 @@ const routes: Routes = [
   },
   {
     path: 'contacts/:id', component:ContactDetailComponent
+  },
+  {
+    path: '**', component:NotFoundComponent
   }
 ];
 
