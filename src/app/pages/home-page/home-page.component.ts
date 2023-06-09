@@ -12,7 +12,7 @@ export class HomePageComponent {
   }
 
   displayContacts(): void{
-    //this.router.navigate();
+    this.router.navigate(['contacts']);
   }
 
 }

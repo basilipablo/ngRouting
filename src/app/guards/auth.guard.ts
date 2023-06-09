@@ -1,15 +1,17 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import {inject} from '@angular/core';
+import { Router } from '@angular/router';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthGuard implements CanActivate {
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+//import {AuthService} from '../auth/auth.service';
+
+export const authGuard = () => {
+  //logic to see if the user is logged in
+  //const authService = inject(AuthService);
+  const router = inject(Router);
+
+  if (sessionStorage.getItem('token') == 'true') {
     return true;
   }
-  
-}
+
+  // Redirect to the login page
+  return router.parseUrl('/login');
+};
