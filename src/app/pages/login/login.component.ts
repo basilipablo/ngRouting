@@ -20,5 +20,6 @@ export class LoginComponent implements OnInit {
 
   loginUser(): void {
     sessionStorage.setItem('token', 'true');
+    this.router.navigate(['contacts'])
   }
 }
