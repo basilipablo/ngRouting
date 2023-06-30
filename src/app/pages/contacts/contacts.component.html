@@ -3,6 +3,7 @@
 <div *ngFor="let contact of contactsList; let i=index">
     <div routerLink='/contacts/{{contact.id}}'>
         <h6>{{contact.name}}</h6>
+        <button (click)="goHome(contact)">Send Contact</button>
     </div>
 
 </div>
