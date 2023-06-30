@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
+import { IContact } from 'src/app/models/contacts.interface';
 
 @Component({
   selector: 'app-home-page',
@@ -7,12 +8,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent {
+  selectedContact: IContact | undefined;
+  token: String | null = null;
+
   constructor (private router:Router) {
 
   }
 
+  ngOnInit(): void{
+    this.token = sessionStorage.getItem('token');
+    console.log(history.state.data ?? 'No History Data');
+    this.selectedContact = history.state.data;
+  }
+
   displayContacts(): void{
-    this.router.navigate(['contacts']);
+    let navigationExtras : NavigationExtras = {
+      queryParams: {
+        //filterSex: 0 
+      }
+    }
+
+    this.router.navigate(['contacts'], navigationExtras);
   }
 
 }

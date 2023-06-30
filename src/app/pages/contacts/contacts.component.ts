@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IContact } from 'src/app/models/contacts.interface';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-contacts',
@@ -13,19 +14,39 @@ export class ContactsComponent {
       id: 0,
       name: 'Lisa',
       lastname: 'Simpson',
-      email: 'iamlisa@yopmail.com'
+      email: 'iamlisa@yopmail.com',
+      sex: 0
     },
     {
       id: 1,
       name: 'Bart',
       lastname: 'Simpson',
-      email: 'elbarto@yopmail.com'
+      email: 'elbarto@yopmail.com',
+      sex: 1
     },
     {
       id: 2,
       name: 'Ned',
       lastname: 'Flanders',
-      email: 'flandersneddy@yopmail.com'
+      email: 'flandersneddy@yopmail.com',
+      sex: 1
     }
   ]
+
+  constructor(private router: Router, private route: ActivatedRoute) { }
+
+  ngOnInit(): void{
+
+  }
+
+  goHome(contact: IContact){
+
+    let navigationExtras: NavigationExtras = {
+      state: {
+        data: contact
+      }
+    }
+
+    this.router.navigate(['/home'], navigationExtras)
+  }
 }
