@@ -28,7 +28,7 @@ export class HomePageComponent {
       }
     }
 
-    this.router.navigate(['contacts'], navigationExtras);
+    this.router.navigate(['/contacts'], navigationExtras);
   }
 
 }

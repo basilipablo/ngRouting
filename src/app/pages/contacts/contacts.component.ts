@@ -36,7 +36,8 @@ export class ContactsComponent {
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void{
-
+    //get query params
+    this.route.queryParams.subscribe((params) => console.log(params['filterSex']))
   }
 
   goHome(contact: IContact){

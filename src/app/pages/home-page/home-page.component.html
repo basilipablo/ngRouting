@@ -1,9 +1,18 @@
 <h1>Welcome</h1>
 <h3>Really really welcome</h3>
-<h4 *ngIf="selectedContact">Selected: {{selectedContact.name}}</h4>
+
+<div *ngIf="selectedContact; else elseBlock">
+    <h4>Selected: {{selectedContact.name}}</h4>
+</div>
+<ng-template #elseBlock>
+    <div><p>Please select your invisible friend</p></div>
+</ng-template>
 
 <button (click)="displayContacts()">Contacts List</button>
-<a [routerLink]="['contacts']" [queryParams]="{filterSex:0}">Female Friends</a>
-<a [routerLink]="['contacts']" [queryParams]="{filterSex:1}">Male Friends</a>
+
+<p>Filter:</p>
+<a [routerLink]="['/contacts']" [queryParams]="{filterSex:0}">Female Friends</a>
+<br>
+<a [routerLink]="['/contacts']" [queryParams]="{filterSex:1}">Male Friends</a>
 <td></td>
 <a *ngIf="!token" routerLink='/login'> Log in </a>
